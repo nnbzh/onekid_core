@@ -10,6 +10,7 @@ use App\Helpers\TokenHandler;
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\PhoneVerificationRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\UsernameLoginRequest;
 use App\Models\User;
 use App\Traits\ApiResponse;
 use App\Traits\IssuesToken;
@@ -50,6 +51,19 @@ class AuthController extends BaseController
     {
         $tokens = TokenHandler::handle($this->issueToken($request));
 
-        return $this->successResponse($tokens);
+        return $this->successResponse([
+            "auth" => $tokens,
+            "user" => $request->user()
+        ]);
+    }
+
+    public function loginByUsername(UsernameLoginRequest $request): JsonResponse
+    {
+        $tokens = TokenHandler::handle($this->issueToken($request, 'password'));
+
+        return $this->successResponse([
+            "auth" => $tokens,
+            "user" => $request->user()
+        ]);
     }
 }

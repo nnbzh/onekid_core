@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserTypesTable extends Migration
+class CreateClassTemplatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateUserTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_types', function (Blueprint $table) {
+        Schema::create('class_templates', function (Blueprint $table) {
             $table->id();
-            $table->string('slug');
             $table->string('name');
+            $table->string('description');
+            $table->foreignId('center_id')->references('id')->on('centres')->cascadeOnDelete();
+            $table->foreignId('category_id')->references('id')->on('class_categories')->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateUserTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_types');
+        Schema::dropIfExists('class_templates');
     }
 }

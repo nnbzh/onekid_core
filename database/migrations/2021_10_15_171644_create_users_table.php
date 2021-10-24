@@ -17,9 +17,11 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('phone_number')->unique()->nullable();
             $table->string('username')->unique()->nullable();
-            $table->string('password', 13)->nullable();
+            $table->string('email')->unique()->nullable();
+            $table->string('password')->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
+            $table->foreignId('parent_id')->nullable()->references('id')->on('users')->cascadeOnDelete();
             $table->boolean('is_verified')->default(false);
             $table->timestamps();
         });

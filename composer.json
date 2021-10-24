@@ -6,13 +6,14 @@
     "type": "project",
     "require": {
         "php": "^8.0",
+        "ext-redis": "*",
+        "darkaonline/swagger-lume": "^8.0",
         "dusterio/lumen-passport": "^0.3.4",
         "fruitcake/laravel-cors": "^2.0",
         "laravel/lumen-framework": "^8.0",
         "laravel/passport": "^10.1",
         "pearl/lumen-request-validate": "^1.6",
-        "predis/predis": "^1.1",
-      "ext-redis": "*"
+        "predis/predis": "^1.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

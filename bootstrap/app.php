@@ -102,6 +102,7 @@ $app->register(Laravel\Passport\PassportServiceProvider::class);
 $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 $app->register(Pearl\RequestValidate\RequestServiceProvider::class);
 $app->register(\App\Providers\PhoneAuthServiceProvider::class);
+$app->register(\SwaggerLume\ServiceProvider::class);
 
 LumenPassport::routes($app);
 

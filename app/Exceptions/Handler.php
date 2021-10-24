@@ -7,6 +7,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Validation\ValidationException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
+use Laravel\Passport\Exceptions\OAuthServerException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
 
@@ -54,6 +55,12 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof InvalidCodeException) {
             return $this->errorResponse($exception->getCode(), $exception->getMessage());
+        }
+
+        if ($exception instanceof OAuthServerException) {
+            $error = OAuthExceptionTranslator::translate($exception);
+
+            return $this->errorResponse($error['code'], $error['message']);
         }
 
         return parent::render($request, $exception);

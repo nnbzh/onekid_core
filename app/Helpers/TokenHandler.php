@@ -5,6 +5,9 @@ namespace App\Helpers;
 class TokenHandler
 {
     public static function handle(object $tokens) {
-        return json_decode($tokens->getContent(), true);
+        $tokens = json_decode($tokens->getContent(), true);
+        request()->headers->set("Authorization", "Bearer {$tokens['access_token']}");
+
+        return $tokens;
     }
 }

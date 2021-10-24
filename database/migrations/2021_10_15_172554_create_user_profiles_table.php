@@ -17,8 +17,8 @@ class CreateUserProfilesTable extends Migration
             $table->id();
             $table->date('birth_date')->nullable();
             $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->foreignId('type_id')->references('id')->on('user_types')->cascadeOnDelete();
             $table->foreignId('gender_id')->references('id')->on('genders')->cascadeOnDelete();
+            $table->unique('user_id');
             $table->timestamps();
         });
     }
