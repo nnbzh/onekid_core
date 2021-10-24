@@ -21,11 +21,13 @@ class PhoneVerificationRequest extends RequestAbstract
      *             property="code",
      *             description="Code",
      *             type="integer",
+     *             example="3077"
      *           ),
      *           @OA\Property(
      *             property="phone_number",
      *             description="Phone number",
-     *             type="integer",
+     *             type="string",
+     *             example="+7(777)4563077"
      *           ),
      *         ),
      *       ),

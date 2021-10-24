@@ -7,7 +7,7 @@ use App\Http\Controllers\BaseController;
 use App\Models\ClassCategory;
 use Illuminate\Http\JsonResponse;
 
-class CategoriesController extends BaseController
+class CategoryController extends BaseController
 {
 
     /**
@@ -50,13 +50,13 @@ class CategoriesController extends BaseController
      *         name="keyword",
      *         in="query",
      *         description="Search class by name",
-     *         required=true,
+     *         required=false,
      *     ),
      *     @OA\Parameter(
      *         name="page",
      *         in="query",
      *         description="Page",
-     *         required=true,
+     *         required=false,
      *     ),
      *     @OA\Response(
      *         response="200",

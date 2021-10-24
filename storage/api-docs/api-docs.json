@@ -46,13 +46,13 @@
                         "name": "keyword",
                         "in": "query",
                         "description": "Search class by name",
-                        "required": true
+                        "required": false
                     },
                     {
                         "name": "page",
                         "in": "query",
                         "description": "Page",
-                        "required": true
+                        "required": false
                     }
                 ],
                 "responses": {
@@ -177,11 +177,13 @@
                                 "properties": {
                                     "code": {
                                         "description": "Code",
-                                        "type": "integer"
+                                        "type": "integer",
+                                        "example": "3077"
                                     },
                                     "phone_number": {
                                         "description": "Phone number",
-                                        "type": "integer"
+                                        "type": "string",
+                                        "example": "+7(777)4563077"
                                     }
                                 },
                                 "type": "object"
@@ -258,8 +260,9 @@
                             "schema": {
                                 "properties": {
                                     "phone_number": {
-                                        "description": "Phone number (+7(777)4563077)",
-                                        "type": "string"
+                                        "description": "Phone number",
+                                        "type": "string",
+                                        "example": "+7(777)4563077"
                                     }
                                 },
                                 "type": "object"
@@ -287,9 +290,15 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "phone_number": {
-                                        "description": "Phone number (+7(777)4563077)",
-                                        "type": "string"
+                                    "username": {
+                                        "description": "Username",
+                                        "type": "string",
+                                        "example": "asikn"
+                                    },
+                                    "password": {
+                                        "description": "Password",
+                                        "type": "string",
+                                        "example": "pass1234"
                                     }
                                 },
                                 "type": "object"

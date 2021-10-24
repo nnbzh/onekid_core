@@ -19,8 +19,9 @@ class RegisterRequest extends RequestAbstract
      *         @OA\Schema(
      *           @OA\Property(
      *             property="phone_number",
-     *             description="Phone number (+7(777)4563077)",
+     *             description="Phone number",
      *             type="string",
+     *             example="+7(777)4563077"
      *           ),
      *         ),
      *       ),

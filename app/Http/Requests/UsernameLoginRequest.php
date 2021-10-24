@@ -18,9 +18,16 @@ class UsernameLoginRequest extends RequestAbstract
      *         mediaType="application/json",
      *         @OA\Schema(
      *           @OA\Property(
-     *             property="phone_number",
-     *             description="Phone number (+7(777)4563077)",
+     *             property="username",
+     *             description="Username",
      *             type="string",
+     *             example="asikn"
+     *           ),
+     *           @OA\Property(
+     *             property="password",
+     *             description="Password",
+     *             type="string",
+     *             example="pass1234"
      *           ),
      *         ),
      *       ),

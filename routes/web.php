@@ -36,10 +36,10 @@ $router->group(['prefix' => 'api'], function () use ($router) {
                     });
                 });
                 $router->group(['prefix' => 'categories'], function () use ($router) {
-                    $router->get('', 'CategoriesController@list');
-                    $router->get('{id:[0-9]+}', 'CategoriesController@get');
+                    $router->get('', 'CategoryController@list');
+                    $router->get('{id:[0-9]+}', 'CategoryController@get');
                 });
-                $router->post('genders', 'GenderController@list');
+                $router->get('genders', 'GenderController@list');
             });
         });
     });
