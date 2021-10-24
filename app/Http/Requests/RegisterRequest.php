@@ -12,7 +12,6 @@ class RegisterRequest extends RequestAbstract
      *     summary = "Register user and login by sms",
      *     operationId="auth.register",
      *     tags={"Auth"},
-     *     security={ {"bearer": {} }},
     *       @OA\RequestBody(
      *       required=true,
      *       @OA\MediaType(
@@ -20,7 +19,7 @@ class RegisterRequest extends RequestAbstract
      *         @OA\Schema(
      *           @OA\Property(
      *             property="phone_number",
-     *             description="Phone number",
+     *             description="Phone number (+7(777)4563077)",
      *             type="string",
      *           ),
      *         ),

@@ -13,6 +13,7 @@ class RedisCache
     {
         $this->storage  = new Redis();
         $this->storage->connect(env('REDIS_HOST', 'localhost'), env('REDIS_PORT', 6379));
+        $this->storage->auth(env('REDIS_PASSWORD'));
         $this->storage->select($index);
     }
 

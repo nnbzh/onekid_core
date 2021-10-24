@@ -16,6 +16,4 @@ class UserProfileController extends BaseController
 
         return $this->successResponse($user->load('profile')->toArray(), 201);
     }
-
-
 }

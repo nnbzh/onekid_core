@@ -23,18 +23,24 @@ $router->group(['prefix' => 'api'], function () use ($router) {
             $router->post('register', 'AuthController@loginByPhone');
             $router->post('login', 'AuthController@loginByUsername');
             $router->post('verify', 'AuthController@verify');
-            $router->post('genders', 'GenderController@list');
             $router->group(['middleware' => 'auth'], function () use ($router) {
                 $router->group(['prefix' => 'user'], function () use ($router) {
                     $router->get('', 'UserController@user');
-                    $router->post('profile', 'UserProfileController@create');
-                    $router->post('children', 'UserProfileController@create');
+                    $router->group(['prefix' => 'profile'], function () use ($router) {
+                        $router->get('', 'UserProfileController@get');
+                        $router->post('', 'UserProfileController@create');
+                    });
+                    $router->group(['prefix' => 'children'], function () use ($router) {
+                        $router->get('', 'UserController@children');
+                        $router->post('', 'UserController@addChild');
+                    });
                 });
-                $router->get('categories', 'CategoriesController@list');
-                $router->get('categories/{id:[0-9]+}', 'CategoriesController@get');
+                $router->group(['prefix' => 'categories'], function () use ($router) {
+                    $router->get('', 'CategoriesController@list');
+                    $router->get('{id:[0-9]+}', 'CategoriesController@get');
+                });
+                $router->post('genders', 'GenderController@list');
             });
-
-
         });
     });
 });

@@ -9,22 +9,63 @@
         "version": "1.0"
     },
     "paths": {
-        "/api/v1/register": {
+        "/api/v1/user": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "User info",
+                "operationId": "user.info",
+                "responses": {
+                    "200": {
+                        "description": "User info"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/user/children": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "User children",
+                "operationId": "user.children",
+                "responses": {
+                    "200": {
+                        "description": "Children"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            },
             "post": {
                 "tags": [
-                    "Auth"
+                    "User"
                 ],
-                "summary": "Register user and login by sms",
-                "operationId": "auth.register",
+                "summary": "Add child",
+                "operationId": "user.children.add",
                 "requestBody": {
                     "required": true,
                     "content": {
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "phone_number": {
-                                        "description": "Phone number",
-                                        "type": "string"
+                                    "user": {
+                                        "description": "User object with info",
+                                        "type": "string",
+                                        "example": {
+                                            "first_name": "Asik",
+                                            "username": "asikn",
+                                            "password": "pass1234"
+                                        }
                                     }
                                 },
                                 "type": "object"
@@ -42,6 +83,144 @@
                         "bearer": []
                     }
                 ]
+            }
+        },
+        "/api/v1/verify": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Verify code sent by sms(last 4 digits of number)",
+                "operationId": "auth.verify",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "code": {
+                                        "description": "Code",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "New User"
+                    }
+                }
+            }
+        },
+        "/api/v1/user/profile": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Create user profile",
+                "operationId": "user.profile.create",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user": {
+                                        "description": "User object with info",
+                                        "type": "string",
+                                        "example": {
+                                            "first_name": "Asik",
+                                            "last_name": "Asik",
+                                            "email": "asikn@gmail.com"
+                                        }
+                                    },
+                                    "profile": {
+                                        "description": "User profile object with info",
+                                        "type": "string",
+                                        "example": {
+                                            "gender_id": 1,
+                                            "birth_date": "01-01-2000"
+                                        }
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "New User"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Register user and login by sms",
+                "operationId": "auth.register",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "phone_number": {
+                                        "description": "Phone number (+7(777)4563077)",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "New User"
+                    }
+                }
+            }
+        },
+        "/api/v1/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login with username(child)",
+                "operationId": "auth.login_by_username",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "phone_number": {
+                                        "description": "Phone number (+7(777)4563077)",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "New User"
+                    }
+                }
             }
         }
     },

@@ -40,4 +40,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     public function findForPassport($username) {
         return User::query()->where('username', $username)->first();
     }
+
+    public function children() {
+        return $this->hasMany(User::class, 'parent_id', 'id');
+    }
 }
