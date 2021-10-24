@@ -35,9 +35,9 @@ class RedisCache
      * @param string $key
      * @param $value
      */
-    public function set(string $key, $value)
+    public function set(string $key, $value, $timeout = null)
     {
-        $this->storage->set($key, json_encode($value));
+        $this->storage->set($key, json_encode($value), $timeout);
     }
 
     /**

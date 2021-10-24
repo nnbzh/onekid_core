@@ -42,7 +42,7 @@ class AuthController extends BaseController
         $this->redis->set(self::PHONE_CODE_REDIS_KEY.$phoneNumber, [
             "code"      => $code,
             "user_id"   => $user->id
-        ]);
+        ], 60);
 
         return $this->successResponse($user, null, 201);
     }

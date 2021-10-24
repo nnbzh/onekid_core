@@ -9,6 +9,83 @@
         "version": "1.0"
     },
     "paths": {
+        "/api/v1/categories": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "List of categories",
+                "operationId": "categories.list",
+                "responses": {
+                    "200": {
+                        "description": "Categories"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/categories/{id}": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Get category",
+                "operationId": "categories.get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the category",
+                        "required": true
+                    },
+                    {
+                        "name": "keyword",
+                        "in": "query",
+                        "description": "Search class by name",
+                        "required": true
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Categories"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/genders": {
+            "get": {
+                "tags": [
+                    "Genders"
+                ],
+                "summary": "List of genders",
+                "operationId": "genders.list",
+                "responses": {
+                    "200": {
+                        "description": "Genders"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
         "/api/v1/user": {
             "get": {
                 "tags": [
@@ -100,6 +177,10 @@
                                 "properties": {
                                     "code": {
                                         "description": "Code",
+                                        "type": "integer"
+                                    },
+                                    "phone_number": {
+                                        "description": "Phone number",
                                         "type": "integer"
                                     }
                                 },

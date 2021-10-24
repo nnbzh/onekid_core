@@ -9,6 +9,22 @@ use Illuminate\Http\JsonResponse;
 
 class CategoriesController extends BaseController
 {
+
+    /**
+     * @OA\Get (
+     *     path="/api/v1/categories",
+     *     summary = "List of categories",
+     *     operationId="categories.list",
+     *     tags={"Categories"},
+     *     security={ {"bearer": {} }},
+     *     @OA\Response(
+     *         response="200",
+     *         description="Categories",
+     *     )
+     * )
+     *
+     * @return JsonResponse
+     */
     public function list(): JsonResponse
     {
         return $this->successResponse(Pagination::handle(ClassCategory::query()
@@ -17,6 +33,39 @@ class CategoriesController extends BaseController
         ));
     }
 
+    /**
+     * @OA\Get (
+     *     path="/api/v1/categories/{id}",
+     *     summary = "Get category",
+     *     operationId="categories.get",
+     *     tags={"Categories"},
+     *     security={ {"bearer": {} }},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="ID of the category",
+     *         required=true,
+     *     ),
+     *     @OA\Parameter(
+     *         name="keyword",
+     *         in="query",
+     *         description="Search class by name",
+     *         required=true,
+     *     ),
+     *     @OA\Parameter(
+     *         name="page",
+     *         in="query",
+     *         description="Page",
+     *         required=true,
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Categories",
+     *     )
+     * )
+     *
+     * @return JsonResponse
+     */
     public function get($id) {
         $category = ClassCategory::query()->findOrFail($id);
         $classTemplates = $category->classTemplates()->with('centre');
