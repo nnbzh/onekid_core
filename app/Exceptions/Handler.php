@@ -57,6 +57,10 @@ class Handler extends ExceptionHandler
             return $this->errorResponse($exception->getCode(), $exception->getMessage());
         }
 
+        if ($exception instanceof RequestAnotherCode) {
+            return $this->errorResponse($exception->getCode(), $exception->getMessage());
+        }
+
         if ($exception instanceof OAuthServerException) {
             $error = OAuthExceptionTranslator::translate($exception);
 

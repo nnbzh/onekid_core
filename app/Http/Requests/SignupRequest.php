@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Pearl\RequestValidate\RequestAbstract;
 
-class RegisterRequest extends RequestAbstract
+class SignupRequest extends RequestAbstract
 {
     /**
      * @OA\Post (

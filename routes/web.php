@@ -39,8 +39,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
                     $router->get('', 'CategoryController@list');
                     $router->get('{id:[0-9]+}', 'CategoryController@get');
                 });
-                $router->get('genders', 'GenderController@list');
             });
+            $router->get('genders', 'GenderController@list');
         });
     });
 });

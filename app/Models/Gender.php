@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Traits\HasFilters;
 
-class Gender extends Model
+class Gender extends TimestampedModel
 {
-    protected $table = "genders";
-    protected $fillable = ['slug', 'name'];
-    public $timestamps = true;
-    protected $hidden = ['updated_at', 'created_at'];
+    use HasFilters;
+
+    protected $fillable = [
+        'slug',
+        'name'
+    ];
 
 }

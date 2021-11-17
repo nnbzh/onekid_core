@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class ClassCategory extends Model
+class ClassCategory extends TimestampedModel
 {
-    protected $table = 'class_categories';
-    public $timestamps = true;
-    protected $fillable = ['name', 'slug'];
-    protected $hidden = ['created_at', 'updated_at'];
+
+    protected $fillable = [
+        'name',
+        'slug'
+    ];
 
     public function classTemplates(): HasMany
     {

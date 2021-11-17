@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use App\Exceptions\InvalidCodeException;
 use App\Helpers\PhoneNumberFormatter;
-use App\Helpers\RandomCodeGenerator;
 use App\Helpers\RedisCache;
 use App\Helpers\TokenHandler;
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\PhoneVerificationRequest;
-use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\SignupRequest;
 use App\Http\Requests\UsernameLoginRequest;
 use App\Models\User;
 use App\Traits\ApiResponse;
@@ -30,10 +28,10 @@ class AuthController extends BaseController
     }
 
     /**
-     * @param RegisterRequest $request
+     * @param SignupRequest $request
      * @return JsonResponse
      */
-    public function loginByPhone(RegisterRequest $request): JsonResponse
+    public function loginByPhone(SignupRequest $request): JsonResponse
     {
         $phoneNumber = PhoneNumberFormatter::clear($request->get('phone_number'));
         $user = User::query()->firstOrCreate(['phone_number' => $phoneNumber]);
